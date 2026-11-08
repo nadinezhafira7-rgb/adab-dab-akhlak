@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide Foto</title>
+  <style>
+    .slider {
+      max-width: 600px;
+      margin: 20px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 9s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0%, 28% { transform: translateX(0); }
+      33%, 61% { transform: translateX(-33.33%); }
+      66%, 94% { transform: translateX(-66.66%); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider">
+    <div class="slides">
+      <img src="https://picsum.photos/600/350?random=1" alt="Foto 1">
+      <img src="https://picsum.photos/600/350?random=2" alt="Foto 2">
+      <img src="https://picsum.photos/600/350?random=3" alt="Foto 3">
+    </div>
+  </div>
+
+</body>
+</html>

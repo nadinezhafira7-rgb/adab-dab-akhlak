@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IslamiCore - Futuristik Nav</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset & Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --neon-blue: #00f2ff;
+            --deep-space: #05060a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--deep-space);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Background efek luar angkasa sederhana */
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
+        }
+
+        /* Navbar Container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6%;
+            height: 80px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo Area */
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        /* Hover Effect Line */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after, 
+        .nav-item.active a::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(10, 11, 16, 0.95);
+            border: 1px solid var(--border-glass);
+            min-width: 220px;
+            padding: 1rem 0;
+            list-style: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu li a {
+            padding: 0.7rem 1.5rem;
+            display: block;
+            text-transform: none;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: 0.3s;
+        }
+
+        .dropdown-menu li a::after { display: none; } /* Hilangkan garis bawah di dropdown */
+
+        .dropdown-menu li a:hover {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--neon-blue);
+            padding-left: 1.8rem;
+        }
+
+        /* Content Placeholder */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">CA<span>CORE</span></div>
+        
+        <ul class="nav-links">
+            <li class="nav-item active"><a href="index cahaya.html">Beranda</a></li>
+            
+        </ul>
+
+        <div style="width: 150px; text-align: right;">
+            <small style="color: var(--neon-blue); font-size: 0.7rem; letter-spacing: 2px;">SYSTEM ACTIVE</small>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>PENGERTIAN ADAB DAN AKHLAQ</h1>
+        <p style="color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase;">AYO BELAJAR</p>
+    </div>
+	
+<br>
+
+<h1>ADAB DAN AKHLAK DALAM ISLAM</h1>
+
+<h1>1. Pengertian Adab</h1>
+<p> 
+Adab adalah tata krama, sopan santun, dan aturan berperilaku baik
+sesuai ajaran Islam. Adab mengajarkan kita untuk bersikap sopan
+kepada Allah SWT, orang tua, guru, teman, dan masyarakat.
+</p>
+
+<h1>2. Pengertian Akhlak</h1>
+<p>
+Akhlak adalah sifat atau perilaku yang tertanam dalam diri seseorang
+dan memengaruhi perkataan, perbuatan, serta sikapnya. Akhlak dibagi
+menjadi akhlak terpuji (mahmudah) dan akhlak tercela (mazmumah).
+</p>
+<br>
+
+
+<h1>3. Macam-Macam Adab dan Contohnya</h1>
+
+<ul>
+    <li>
+        <h2>Adab kepada Allah SWT</h2>
+        <p>Penjelasan: Menunjukkan rasa hormat, taat, dan bersyukur kepada Allah.</p>
+        <p>Contoh: Melaksanakan salat tepat waktu, berdoa, dan bersyukur.</p>
+        <p>Ilustrasi: Seorang anak sedang berdoa setelah salat.</p>
+    </li>
+
+    <li>
+        <h2>Adab kepada Orang Tua</h2>
+        <p>Penjelasan: Menghormati, menyayangi, dan menaati orang tua dalam hal yang baik.</p>
+        <p>Contoh: Berbicara sopan, membantu pekerjaan rumah, dan meminta izin.</p>
+        <p>Ilustrasi: Seorang anak membantu ibunya membersihkan rumah.</p>
+    </li>
+
+    <li>
+        <h2>Adab kepada Guru</h2>
+        <p>Penjelasan: Menghormati guru sebagai orang yang memberikan ilmu dan bimbingan.</p>
+        <p>Contoh: Mendengarkan penjelasan, tidak memotong pembicaraan, dan berterima kasih.</p>
+        <p>Ilustrasi: Seorang siswa memperhatikan guru saat belajar.</p>
+    </li>
+
+    <li>
+        <h2>Adab kepada Teman</h2>
+        <p>Penjelasan: Bersikap baik, saling menghargai, dan menjaga hubungan pertemanan.</p>
+        <p>Contoh: Tidak mengejek, membantu teman, dan menjaga rahasia.</p>
+        <p>Ilustrasi: Dua siswa belajar bersama dan saling membantu.</p>
+    </li>
+
+    <li>
+        <h2>Adab terhadap Lingkungan</h2>
+        <p>Penjelasan: Menjaga kebersihan, ketertiban, dan kenyamanan lingkungan.</p>
+        <p>Contoh: Membuang sampah pada tempatnya, mengantre, dan merawat tanaman.</p>
+        <p>Ilustrasi: Seorang siswa membuang sampah ke tempat sampah.</p>
+    </li>
+</ul>
+
+<h1>4. Macam-Macam Akhlak Terpuji</h1>
+
+<ul>
+    <li>
+        <h2>Jujur</h2>
+        <p>Penjelasan: Berkata dan bertindak sesuai kenyataan.</p>
+        <p>Contoh: Mengakui kesalahan dan tidak menyontek saat ujian.</p>
+        <p>Ilustrasi: Seorang siswa mengakui kesalahannya kepada guru.</p>
+    </li>
+
+    <li>
+        <h2>Amanah</h2>
+        <p>Penjelasan: Dapat dipercaya dalam menjaga sesuatu dan menjalankan tanggung jawab.</p>
+        <p>Contoh: Mengembalikan barang pinjaman dan menjaga titipan teman.</p>
+        <p>Ilustrasi: Seorang siswa mengembalikan dompet yang ditemukan.</p>
+    </li>
+
+    <li>
+        <h2>Sabar</h2>
+        <p>Penjelasan: Mampu mengendalikan diri saat menghadapi kesulitan.</p>
+        <p>Contoh: Tidak mudah marah dan tetap berusaha ketika belajar.</p>
+        <p>Ilustrasi: Seorang siswa tetap berusaha mengerjakan soal sulit.</p>
+    </li>
+
+    <li>
+        <h2>Rendah Hati (Tawadhu)</h2>
+        <p>Penjelasan: Tidak sombong dan mau menghargai orang lain.</p>
+        <p>Contoh: Tidak membanggakan diri secara berlebihan dan mau menerima nasihat.</p>
+        <p>Ilustrasi: Seorang siswa mendengarkan pendapat temannya.</p>
+    </li>
+
+    <li>
+        <h2>Dermawan</h2>
+        <p>Penjelasan: Suka memberi dan membantu orang lain dengan ikhlas.</p>
+        <p>Contoh: Berbagi makanan, bersedekah, dan membantu teman.</p>
+        <p>Ilustrasi: Seorang siswa berbagi bekal dengan temannya.</p>
+    </li>
+</ul>
+
+<h1>5. Macam-Macam Akhlak Tercela</h1>
+
+<ul>
+    <li>
+        <h2>Dusta</h2>
+        <p>Penjelasan: Berkata tidak sesuai dengan kenyataan.</p>
+        <p>Contoh: Berbohong kepada orang tua atau guru.</p>
+        <p>Ilustrasi: Seorang siswa berbohong tentang tugas sekolah.</p>
+    </li>
+
+    <li>
+        <h2>Sombong (Takabur)</h2>
+        <p>Penjelasan: Merasa diri lebih hebat dan merendahkan orang lain.</p>
+        <p>Contoh: Mengejek teman karena merasa lebih pintar.</p>
+        <p>Ilustrasi: Seorang siswa membanggakan prestasinya dan meremehkan teman.</p>
+    </li>
+
+    <li>
+        <h2>Iri Hati (Hasad)</h2>
+        <p>Penjelasan: Tidak senang melihat orang lain memperoleh nikmat atau keberhasilan.</p>
+        <p>Contoh: Tidak senang ketika teman mendapatkan nilai bagus.</p>
+        <p>Ilustrasi: Seorang siswa merasa iri terhadap prestasi temannya.</p>
+    </li>
+
+    <li>
+        <h2>Pemarah</h2>
+        <p>Penjelasan: Sulit mengendalikan emosi sehingga mudah marah kepada orang lain.</p>
+        <p>Contoh: Membentak teman karena kesalahpahaman.</p>
+        <p>Ilustrasi: Seorang siswa berbicara kasar ketika berselisih.</p>
+    </li>
+
+    <li>
+        <h2>Malas</h2>
+        <p>Penjelasan: Tidak bersemangat menjalankan kewajiban atau kegiatan bermanfaat.</p>
+        <p>Contoh: Menunda tugas sekolah dan tidak mau ikut piket.</p>
+        <p>Ilustrasi: Seorang siswa tidak ikut membersihkan kelas.</p>
+    </li>
+</ul>
+
+<h1>6. Kesimpulan</h1>
+<p>
+Adab dan akhlak merupakan bagian penting dalam kehidupan seorang Muslim.
+Adab mengajarkan tata cara bersikap sopan, sedangkan akhlak membentuk
+sifat dan karakter seseorang. Kita harus membiasakan perilaku terpuji
+seperti jujur, sabar, amanah, dan rendah hati serta menghindari perilaku
+tercela seperti dusta, sombong, iri hati, dan malas agar menjadi pribadi
+yang beriman dan berakhlak mulia.
+</p>
+
+
+</body>
+</html>
